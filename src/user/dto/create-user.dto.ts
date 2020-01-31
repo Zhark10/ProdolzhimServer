@@ -1,10 +1,8 @@
-import { Document } from 'mongoose';
-
-export interface IUser extends Document {
+export class CreateUserDto {
     readonly uid: number;
     readonly firstName: string;
     readonly lastName: string;
-    readonly role: string[];
+    readonly roles: string[];
     readonly nickname: string;
     readonly rating: number;
     readonly password: string;
