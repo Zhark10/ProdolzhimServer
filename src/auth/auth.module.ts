@@ -1,3 +1,4 @@
+import { JwtStrategy } from './jwt.strategy';
 import { RootConfigModule } from '../config/config.root';
 import { UserModule } from './../user/user.module';
 import { Module } from '@nestjs/common';
