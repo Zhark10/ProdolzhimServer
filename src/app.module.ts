@@ -1,21 +1,17 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-
-const environment = process.env.NODE_ENV || 'dev';
+import { RootConfigModule } from './config/config.root';
 
 @Module({
   imports: [
     UserModule,
     AuthModule,
 
-    ConfigModule.forRoot({
-      envFilePath: `.env.${environment}`,
-      isGlobal: true,
-    }),
+    // configs
+    RootConfigModule,
     MongooseModule.forRoot(
       process.env.MONGODB_CONNECTION_URL,
       {
@@ -24,6 +20,7 @@ const environment = process.env.NODE_ENV || 'dev';
         useCreateIndex: true,
       },
     ),
+    TokenModule,
   ],
 })
 export class AppModule { }
