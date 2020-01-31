@@ -16,5 +16,3 @@ export const UserSchema = new mongoose.Schema({
     avatarId: { type: String, default: null },
     gender: {type: String, required: true, enum: Object.values(EnumGender)},
 });
-
-UserSchema.index({email: 1}, {unique: true});
