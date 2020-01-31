@@ -2,11 +2,11 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { assignIn } from 'lodash';
 import * as bcrypt from 'bcrypt';
 
 import { ModelName } from './../global/models';
 import { IUser } from './interfaces/user.interface';
-import _ = require('lodash');
 
 @Injectable()
 export class UserService {
@@ -17,7 +17,7 @@ export class UserService {
         const salt = await bcrypt.genSalt(saltRounds);
         const hash = await bcrypt.hash(createUserDto.password, salt);
 
-        const createdUser = new this.userModel(_.assignIn(createUserDto, { password: hash, roles }));
+        const createdUser = new this.userModel(assignIn(createUserDto, { password: hash, roles }));
         return await createdUser.save();
     }
 
