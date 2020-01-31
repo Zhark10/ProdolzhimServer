@@ -1,10 +1,11 @@
-import { RootConfigModule } from './../config/config.root';
+import { RootConfigModule } from '../config/config.root';
 import { UserModule } from './../user/user.module';
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
+import { TokenModule } from '../token/token.module';
 
 @Module({
   imports: [
