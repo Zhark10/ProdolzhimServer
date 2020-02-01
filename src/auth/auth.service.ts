@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserService } from 'src/user/user.service';
+// import { UserService } from 'src/user/user.service';
 import { TokenService } from 'src/token/token.service';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { SignOptions } from 'jsonwebtoken';
@@ -10,7 +10,7 @@ import { CreateUserTokenDto } from 'src/token/dto/create-user-token.dto';
 export class AuthService {
     constructor(
         private readonly jwtService: JwtService,
-        private readonly userService: UserService,
+        // private readonly userService: UserService,
         private readonly tokenService: TokenService,
     ) { }
 
