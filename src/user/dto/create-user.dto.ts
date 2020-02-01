@@ -11,4 +11,5 @@ export class CreateUserDto {
     readonly avatar: string;
     readonly avatarId: string;
     readonly gender: string;
+    readonly workIds: number[];
 }
