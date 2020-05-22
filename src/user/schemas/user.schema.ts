@@ -1,9 +1,8 @@
 import { EnumRole } from '../enums/role.enum';
 import { EnumGender } from './../enums/gender.enum';
 import * as mongoose from 'mongoose';
-import * as bcrypt from 'bcrypt';
 
-const UserSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
     uid: { type: Number, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -18,15 +17,3 @@ const UserSchema = new mongoose.Schema({
     gender: {type: String, required: true, enum: Object.values(EnumGender)},
     workIds: {type: [Number], default: null},
 });
-
-UserSchema.methods.checkPassword = async (password: string) => {
-    return new Promise((resolve, reject) => {
-        bcrypt.compare(password, this.password, (err: Error, isMatch: boolean) => {
-            if (err) { reject(err); }
-
-            resolve(isMatch);
-        });
-    });
-};
-
-export default UserSchema;

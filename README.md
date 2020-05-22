@@ -12,6 +12,15 @@ Backend: Nest.js, MongoDB, Mongoose, typescript
 $ yarn
 ```
 
+## Start the docker-container in the background
+```bash
+# on windows/macOS
+$ yarn compose
+
+# on linux
+$ yarn compose:linux
+```
+
 ## Running the app
 
 ```bash

@@ -21,6 +21,15 @@ export class UserService {
         return await createdUser.save();
     }
 
+    async checkPassword(password, hashPassword): Promise<boolean> {
+        return await bcrypt.compare(password, hashPassword);
+    }
+
+    async findByEmail(email: string): Promise<IUser> {
+        const findedUser = await this.userModel.findOne({email});
+        return await this.userModel.findOne({email});
+    }
+
     async find(id: string): Promise<IUser> {
         return await this.userModel.findById(id).exec();
     }
